@@ -1,0 +1,19 @@
+[fs]
+app = "app"
+
+[[module]]
+name = "php"
+source = "php-cgi.wasm"
+abi = "wasi"
+
+[[command]]
+name = "php"
+module = "php"
+runner = "wcgi"
+
+[command.annotations.wasi]
+atom = "php"
+env = ["DOCUMENT_ROOT=/app", "SCRIPT_FILENAME=/app/index.php"]
+
+[command.annotations.wcgi]
+dialect = "rfc-3875"
